@@ -1,24 +1,14 @@
 rut-chileno
 ===========
 
-ruby gem to validate and format chilean R.U.T.
+Ruby gem to validate and format chilean R.U.T.
 
-install as ruby gem
-```
-	$ gem install rut_chileno
-```
-or add to Gemfile in Ruby on Rails
-```ruby
-	gem 'rut_chileno'
-```
-then
-```
-	$ bundle install
-```
 
 One example use could be in a validator class
-```ruby
-class RUTValidator < ActiveModel::Validator
+Rails 4 (app/validators)
+filename: rut_validator.rb
+
+class RutValidator < ActiveModel::Validator
   require 'rut_chileno'
   def validate(record)
     unless RUT::validar(record.rut)
@@ -26,15 +16,9 @@ class RUTValidator < ActiveModel::Validator
     end
   end
 end
-```
-which is then referenced from a model
-```ruby
-class Person < ActiveRecord::Base
-  validates_with RUTValidator
-end
-```
-but let your imagation fly
 
+Para utilzarlo en un modelo por ejemplo:
+validates :rut, presence: true, :uniqueness => {:scope=>:business_id}, :rut => true
 
 ----------------------------------------
 

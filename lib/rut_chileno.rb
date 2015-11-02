@@ -61,6 +61,14 @@ module RUT
     rut=rut.delete "-"
   end
 
+  def quitarPuntos(rut)
+    rut=rut.delete "."
+  end
+
+  def quitarGuion(rut)
+    rut=rut.delete "-"
+  end
+
   ##
   #Given a R.U.T. (whatever the format, i.e. with or without points & hyphens) this method returns boolean wether it is valid or not
   def validar(texto)
@@ -115,6 +123,6 @@ module RUT
     return rut.upcase
   end  
 
-  module_function :digitoValido, :getDigito, :digitoCorrecto, :quitarFormato, :validar, :formatear
+  module_function :digitoValido, :getDigito, :digitoCorrecto, :quitarFormato, :quitarPuntos, :quitarGuion, :validar, :formatear
 
 end
